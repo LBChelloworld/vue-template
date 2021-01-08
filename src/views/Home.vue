@@ -1,13 +1,10 @@
 <template>
-  <div class="home" msg='by 花村村长' v-title data-title="超级课堂">
+  <div class="home" msg='by 花村村长'>
   
   </div>
 </template>
 
 <script>
-// 声明 player
-// eslint-disable-next-line no-unused-vars
-var player = null;
 export default {
   data() {
     return {
@@ -18,20 +15,14 @@ export default {
 
   },
   mounted() {
-    this.modMeans({goShare: this.goShare})
+    // 给原生挂载方法到 window 
+      //? window['goWeChat'] = () => this.goWeChat()
   },
   computed: {
 
   },
   methods: {
-    modMeans(means) {
-      // 给原生挂载方法到 window 
-      //? window['goWeChat'] = () => this.goWeChat()
-      Object.keys(means).forEach(key => window[means[key]] = () => means[key]())
-    },
-    goShare() {
-      console.info('share-success')
-    }
+    
   },
 }
 </script>

@@ -1,4 +1,3 @@
-import {get} from '@/assets/js/http'
 export default {
   //* 判断安卓还是IOS
   isAndroid_ios() {

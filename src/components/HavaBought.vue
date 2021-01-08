@@ -3,11 +3,11 @@
   <div class="havaBought">
     <div class="float-left">
       <span
-        :class="show == index ? 'show' : ''"
-        v-for="(item, index) in havabought"
-        :key="index"
-        >{{ item }}</span
-      >
+      :class="show == index ? 'show' : ''"
+      v-for="(item, index) in havabought"
+      :key="index">
+        {{ item }}
+      </span>
     </div>
   </div>
 </template>
@@ -32,9 +32,8 @@ export default {
     // 定时器展示右侧购买回播
     setInts() {
       if (this.havabought.length>=1) {
-        // eslint-disable-next-line no-unused-vars
         const setInt = setInterval(() => {
-          if (this.show < this.havabought.length - 1 || this.show < 0) {
+          if (this.show < this.havabought.length - 1) {
             var i = this.show;
             this.show = -1;
             const setTimer = setTimeout(() => {
@@ -49,6 +48,7 @@ export default {
             }, 4000);
           }
         }, 8000);
+        this.$once('hook:beforeDestroy', () => clearInterval(setInt))
       }
     },
   }
